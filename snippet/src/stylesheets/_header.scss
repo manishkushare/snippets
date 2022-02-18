@@ -1,0 +1,12 @@
+.header{
+    padding: 2rem 0;
+    font-family: 'Pontano Sans', sans-serif;
+}
+@media screen and (max-width:768px) {
+    .header{
+        .container{
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}

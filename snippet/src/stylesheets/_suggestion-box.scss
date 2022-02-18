@@ -1,0 +1,22 @@
+.suggestion-box{
+    padding: 2rem 0;
+    z-index: 1;
+    // border: 1px solid saddlebrown;
+    width: 100%;
+    background-color: #F3F4F6;
+    color: black;
+    border-radius: 10px;
+    // box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    li{
+
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        width: 80%;
+        text-align: center;
+        background-color: white;
+    }
+}
