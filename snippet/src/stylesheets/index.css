@@ -122,7 +122,7 @@ body {
 }
 
 .activeNav {
-  color: green;
+  color: green !important;
 }
 
 .flex-direction-col {
@@ -172,6 +172,7 @@ label {
 }
 
 .link {
+  color: black;
   text-decoration: none;
   cursor: pointer;
 }
@@ -273,6 +274,7 @@ label {
 .search-snippet input {
   width: 100%;
   z-index: 100;
+  background-color: #F3F9FE;
 }
 
 .logo {
@@ -333,5 +335,15 @@ label {
           align-items: center;
   font-size: 2rem;
   color: red;
+}
+
+@media screen and (max-width: 768px) {
+  .no_match .container {
+    padding: 0 2rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
 }
 /*# sourceMappingURL=index.css.map */

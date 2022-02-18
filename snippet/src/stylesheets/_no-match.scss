@@ -5,3 +5,13 @@
     font-size: 2rem;
     color: red;
 }
+
+@media screen and (max-width:768px) {
+    .no_match{
+        .container{
+            padding: 0 2rem;
+            justify-content: center;
+            text-align: center;
+        }
+    }
+}

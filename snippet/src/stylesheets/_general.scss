@@ -48,7 +48,7 @@ body {
     display: block;
 }
 .activeNav{
-    color: green;
+    color: green !important;
 }
 .flex-direction-col{
     flex-direction: column;
@@ -83,6 +83,7 @@ label{
     margin: 0.5rem 0;
 }
 .link{
+    color: black;
     text-decoration: none;
     cursor: pointer;
     // color: black;

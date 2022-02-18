@@ -2,7 +2,7 @@ import { useState, useEffect, useReducer,useContext } from "react";
 import { act } from "react-dom/test-utils";
 import { LOGIN_URL } from "../utils/api";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+
  
 import { UserContext } from "./context/userContext";
 
@@ -13,8 +13,10 @@ import {
 } from "../utils/methods";
 
 const reducer = (prevState, action) => {
+
   const { type, payload } = action;
   let { emailError, passwordError } = prevState.error;
+  
   switch (type) {
     case "email":
       emailError = validateEmail(payload) ? "" : "Email is Invalid";
@@ -26,6 +28,7 @@ const reducer = (prevState, action) => {
           emailError,
         },
       };
+
     case "password":
       passwordError = validatePassword(payload)
         ? ""
@@ -38,6 +41,7 @@ const reducer = (prevState, action) => {
           passwordError,
         },
       };
+
   }
 };
 
@@ -51,9 +55,13 @@ const initialState = {
 };
 
 const handleSubmit = async (event, state,updateUser,history) => {
+
   event.preventDefault();
+
   const { email, password } = state;
+
   try {
+
     let response =  await fetch(LOGIN_URL,{
       method: "POST",
       headers: {
@@ -64,16 +72,17 @@ const handleSubmit = async (event, state,updateUser,history) => {
         password
       }),
     });
+
     if(!response.ok){
         response  = await response.json();
         response = await Promise.reject(response)
         return response;
     }
+
     response = await response.json();
-    console.log(response.user);
-    // return dispatchUser({type: "persist-user", payload: response.user});
-     updateUser(response.user);
+    updateUser(response.user);
     return history.push('/')
+    
   } catch (error) {
       console.log(error);
   }

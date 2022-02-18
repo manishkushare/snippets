@@ -1,16 +1,17 @@
 import CodeMirrorWrapper from "./CodeMirrorWrapper";
 import SearchSnippet from "./SearchSnippet";
 import { SearchContext } from "../context/searchContext";
-import {useContext,useState} from "react"
+import {useState} from "react"
 
 
 function Home(){
   const [search, setSearch] = useState("");
 
   const handleChange = (value) => {
-    console.log(value);
     setSearch(value);
   };
+
+
   return (
     <div className="hero">
       <div className="container">

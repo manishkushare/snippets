@@ -1,5 +1,4 @@
 import { useState, useContext, useReducer, useEffect } from "react";
-// import { SearchContext } from "./context/searchContext";
 import { Route, Switch } from "react-router-dom";
 import { UserContext } from "./context/userContext";
 import { USER_TOKEN_KEY } from "../utils/constants";
@@ -13,6 +12,7 @@ import NoMatch from "./NoMatch";
 import ErrorBoundary from "./ErrorBoundary";
 
 export default function App() {
+
   const [state, setState] = useState({
     isLoggedIn: false,
     user: null,
@@ -26,8 +26,9 @@ export default function App() {
 
   let token = localStorage.getItem(USER_TOKEN_KEY);
 
+
   const fetchUser = async (token) => {
-    console.log(token);
+    
     try {
       let user = await fetch(VERIFY_USER_URL, {
         method: "GET",
@@ -38,10 +39,10 @@ export default function App() {
         }),
       });
       if (user.ok) {
+
         user = await user.json();
-        console.log(user, user.user.email, "%%");
         user.user.token = token;
-        // return updateUser(user);
+
         return setState((prevState) => {
           return {
             ...prevState,
@@ -50,15 +51,21 @@ export default function App() {
             isLoggedIn: true,
           };
         });
+
       } else {
+
         user = await user.json();
         user = await Promise.reject(user);
         return user;
+
       }
     } catch ({ error }) {
+
       console.log(error);
     }
   };
+
+
   useEffect(() => {
     if (token) {
       fetchUser(token);
@@ -73,8 +80,9 @@ export default function App() {
     }
   }, [token]);
 
+
   function updateUser(user) {
-    console.log(user);
+    
     setState((prevState) => {
       return {
         ...prevState,
@@ -83,7 +91,9 @@ export default function App() {
         isVerifying: false,
       };
     });
+
     localStorage.setItem(USER_TOKEN_KEY, user.token);
+
   }
 
   return (

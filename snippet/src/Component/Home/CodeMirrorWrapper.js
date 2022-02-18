@@ -68,7 +68,6 @@ export default function CodeMirrorWrapper() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { search } = useContext(SearchContext);
   const userInfo = useContext(UserContext);
-  console.log(userInfo,"userInfo");
 
   useEffect(() => {
     dispatch({ type: "LOAD_DATA", payload: search });
@@ -77,6 +76,7 @@ export default function CodeMirrorWrapper() {
   if (state && state.length < 1) {
     return <h2>No Data Found</h2>;
   }
+  
   return (
     <div>
       {state &&

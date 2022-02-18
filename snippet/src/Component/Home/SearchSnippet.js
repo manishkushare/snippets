@@ -10,6 +10,7 @@ import {
 import data from "../../data.json";
 
 function SearchSnippet() {
+
   const [suggestions, setSuggestions] = useState([]);
   const [suggestionBox, setSuggestionBox] = useState(false);
   const { handleChange, search } = useContext(SearchContext);
@@ -22,7 +23,6 @@ function SearchSnippet() {
     handleChange(target.value);
     setSuggestionBox(true);
     const suggestionArray = suggestionResult(data, target.value);
-    console.log(suggestionArray);
     setSuggestions(suggestionArray);
   };
 
