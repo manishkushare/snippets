@@ -24,7 +24,6 @@ export default function App() {
     localStorage.clear();
   }
 
-  let token = localStorage.getItem(USER_TOKEN_KEY);
 
 
   const fetchUser = async (token) => {
@@ -33,8 +32,6 @@ export default function App() {
       let user = await fetch(VERIFY_USER_URL, {
         method: "GET",
         headers: new Headers({
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
           Authorization: ` ${token}`,
         }),
       });
@@ -42,15 +39,7 @@ export default function App() {
 
         user = await user.json();
         user.user.token = token;
-
-        return setState((prevState) => {
-          return {
-            ...prevState,
-            user: user.user,
-            isVerifying: false,
-            isLoggedIn: true,
-          };
-        });
+        return persistUser(user.user);
 
       } else {
 
@@ -67,23 +56,23 @@ export default function App() {
 
 
   useEffect(() => {
+    let token = localStorage.getItem(USER_TOKEN_KEY);
     if (token) {
-      fetchUser(token);
+      return fetchUser(token);
     } else {
-      setState((prevState) => {
+      return setState((prevState) => {
         return {
           ...prevState,
-          user: {},
           isVerifying: false,
         };
       });
     }
-  }, [token]);
+  }, []);
 
 
-  function updateUser(user) {
-    
-    setState((prevState) => {
+  function persistUser(user) {
+    localStorage.setItem(USER_TOKEN_KEY, user.token);
+    return  setState((prevState) => {
       return {
         ...prevState,
         user: user,
@@ -92,13 +81,12 @@ export default function App() {
       };
     });
 
-    localStorage.setItem(USER_TOKEN_KEY, user.token);
 
   }
 
   return (
     <UserContext.Provider
-      value={{ state, updateUser: updateUser, signout: signout }}
+      value={{ state, persistUser: persistUser, signout: signout }}
     >
       {state.isLoggedIn ? <AuthorizedComponent/> : <UnAuthorizedComponent/>}
     </UserContext.Provider>

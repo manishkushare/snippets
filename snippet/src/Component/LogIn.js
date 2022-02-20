@@ -42,6 +42,25 @@ const reducer = (prevState, action) => {
         },
       };
 
+    case "incorrect-email" :
+      emailError = payload;
+      return {
+        ...prevState,
+        error : {
+          ...prevState.error,
+          emailError
+        }
+      }
+
+    case "incorrect-password":
+      passwordError = payload;
+      return {
+        ...prevState,
+        error:{
+          ...prevState.error,
+          passwordError
+        }
+      }
   }
 };
 
@@ -54,11 +73,12 @@ const initialState = {
   },
 };
 
-const handleSubmit = async (event, state,updateUser,history) => {
+const handleSubmit = async (event, state,persistUser,history,dispatch) => {
 
   event.preventDefault();
 
   const { email, password } = state;
+  const {error} = state.error
 
   try {
 
@@ -80,11 +100,18 @@ const handleSubmit = async (event, state,updateUser,history) => {
     }
 
     response = await response.json();
-    updateUser(response.user);
+    persistUser(response.user);
     return history.push('/')
     
   } catch (error) {
-      console.log(error);
+      let message = error.errors.body[0] ;
+      if(message.toLowerCase().includes("email")){
+        dispatch({type:"incorrect-email", payload:"Email is not registerd, please check email"})
+      }
+      if(message.toLowerCase().includes("password")){
+        dispatch({type:"incorrect-password", payload: "Password is wrong, please type valid passwod!"})
+      }
+      
   }
 };
 
@@ -93,7 +120,7 @@ function LogIn() {
   const { email, password } = state;
   const { emailError, passwordError } = state.error;
 
-  const {updateUser} = useContext(UserContext);
+  const {persistUser} = useContext(UserContext);
 
   const history = useHistory();
 
@@ -108,7 +135,7 @@ function LogIn() {
       <div className="container display-flex width-40">
         <form
           action={LOGIN_URL}
-          onSubmit={(event) => handleSubmit(event, state,updateUser,history)}
+          onSubmit={(event) => handleSubmit(event, state,persistUser,history,dispatch)}
           method="POST"
           className="display-flex flex-direction-col  width-100"
         >
