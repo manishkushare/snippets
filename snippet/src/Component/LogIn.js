@@ -162,7 +162,7 @@ function LogIn() {
             placeholder="Please enter a Password"
             className={passwordError ? "input-field-error" : ""}
           />
-          {passwordError ? <span>{passwordError}</span> : null}
+          {passwordError ? <span className="span error-span" >{passwordError}</span> : null}
           <button className="btn" type="submit" disabled={handleButtonValidation()}>
             Submit
           </button>
