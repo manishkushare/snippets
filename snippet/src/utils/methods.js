@@ -1,6 +1,6 @@
 export const isTagsIncludesSearchValue = (arr, searchValue) => {
   return arr.reduce((acc, tag) => {
-    if (tag.includes(searchValue)) {
+    if (tag.toLowerCase().includes(searchValue.toLowerCase())) {
       acc = true;
     }
     return acc;
@@ -8,7 +8,7 @@ export const isTagsIncludesSearchValue = (arr, searchValue) => {
 };
 
 export const isTitleIncludesSearchValue = (title, searchValue) => {
-  if (title.includes(searchValue)) {
+  if (title.toLowerCase().includes(searchValue.toLowerCase())) {
     return true;
   } else {
     return false;

@@ -24,83 +24,76 @@
     },
     {
         "id":4,
-        "tags" : ["react functional Component","react"],
+        "tags" : ["array, html list","arrayToHtmlList"],
         "language" : "jsx",
-        "title": "react functional component",
-        "body" : "import React from \"react\";\nfunction Component(){\n    //your comment here\n    return (\n        //your JSX here\n    )\n}\nexport default Component;"        
-    },
+        "title": "Convert Array to html list",
+        "body": "const arrayToHtmlList = (arr, listID) =>\n  (el => (\n    (el = document.querySelector('#' + listID)),\n    (el.innerHTML += arr.map(item => `<li>${item}</li>`).join(''))\n  ))();\n  \narrayToHtmlList(['item 1', 'item 2'], 'myListID');"
+        },
     {
         "id":5,
-        "tags" : ["react functional Component","react"],
+        "tags" : ["averaget","JS"],
         "language" : "jsx",
-        "title": "react functional component",
-        "body" : "import React from \"react\";\nfunction Component(){\n    //your comment here\n    return (\n        //your JSX here\n    )\n}\nexport default Component;"        
+        "title": "This snippet returns the average of two or more numerical values.",
+        "body":"const average = (...nums) => nums.reduce((acc, val) => acc + val, 0) / nums.length;\naverage(...[1, 2, 3]); // 2\naverage(1, 2, 3); // 2"
     },
     {
         "id":6,
-        "tags" : ["react functional Component","react"],
+        "tags" : ["compact","all true values"],
         "language" : "jsx",
-        "title": "react functional component",
-        "body" : "import React from \"react\";\nfunction Component(){\n    //your comment here\n    return (\n        //your JSX here\n    )\n}\nexport default Component;"        
+        "title": " This snippet removes false values from an array.",
+        "body" : "const compact = arr => arr.filter(Boolean);\n\ncompact([0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34]); \n// [ 1, 2, 3, 'a', 's', 34 ]"
     },
     {
         "id":7,
-        "tags" : ["react functional Component","react"],
+        "tags" : ["Count all occurances"],
         "language" : "jsx",
-        "title": "react functional component",
-        "body" : "import React from \"react\";\nfunction Component(){\n    //your comment here\n    return (\n        //your JSX here\n    )\n}\nexport default Component;"        
+        "title": "This snippet counts the occurrences of a value in an array",
+        "body":"const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);\ncountOccurrences([1, 1, 2, 1, 2, 3], 1); // 3"
     },
     {
         "id":8,
-        "tags" : ["react functional Component","react"],
+        "tags" : ["date","date object","getDay","day"],
         "language" : "jsx",
-        "title": "react functional component",
-        "body" : "import React from \"react\";\nfunction Component(){\n    //your comment here\n    return (\n        //your JSX here\n    )\n}\nexport default Component;"        
+        "title": "This snippet gets the day of the year from a Date object",
+        "body":"const dayOfYear = date =>\n  Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);\n\ndayOfYear(new Date()); // 272"
     },
     {
         "id":9,
-        "tags" : ["react functional Component","react"],
+        "tags" : ["lowercase","toLowerCase","string into lower case"],
         "language" : "jsx",
-        "title": "react functional component",
-        "body" : "import React from \"react\";\nfunction Component(){\n    //your comment here\n    return (\n        //your JSX here\n    )\n}\nexport default Component;"        
+        "title": "This snippet turns the first letter of a string into lowercase",
+        "body":"const decapitalize = ([first, ...rest]) =>\n  first.toLowerCase() + rest.join('')\n\ndecapitalize('FooBar'); // 'fooBar'\ndecapitalize('FooBar'); // 'fooBar'"
     },
     {
         "id":10,
-        "tags" : ["react functional Component","react"],
+        "tags" : ["map","array.map"],
         "language" : "jsx",
-        "title": "react functional component",
-        "body" : "import React from \"react\";\nfunction Component(){\n    //your comment here\n    return (\n        //your JSX here\n    )\n}\nexport default Component;"        
+        "title": "map array method",
+        "body":"array.map((elem,index)=> {\n    //your code\n    \n})"
     },
     {
         "id":11,
-        "tags" : ["react functional Component","react"],
+        "tags" : ["filter","array.filter"],
         "language" : "jsx",
-        "title": "react functional component",
-        "body" : "import React from \"react\";\nfunction Component(){\n    //your comment here\n    return (\n        //your JSX here\n    )\n}\nexport default Component;"        
+        "title": "filter array method",
+        "body":"arr.filter((elem,index)=> {\n    //your code\n    \n})"
     },
     {
         "id":12,
-        "tags" : ["react functional Component","react"],
+        "tags" : ["reduce","array.reduce"],
         "language" : "jsx",
-        "title": "react functional component",
-        "body" : "import React from \"react\";\nfunction Component(){\n    //your comment here\n    return (\n        //your JSX here\n    )\n}\nexport default Component;"        
+        "title": "reduce array method",
+        "body":"array.reduce((acc,currentvalue,currentIndex,array)=> {\n    //your code\n    \n},initialvalue)"
     },
     {
         "id":13,
-        "tags" : ["react functional Component","react"],
+        "tags" : ["forEach","array.forEach"],
         "language" : "jsx",
-        "title": "react functional component",
-        "body" : "import React from \"react\";\nfunction Component(){\n    //your comment here\n    return (\n        //your JSX here\n    )\n}\nexport default Component;"        
+        "title": "forEach array method",
+        "body":"array.forEach((elem,index)=> {\n    //your code\n    \n})"
     },
     {
         "id":14,
-        "tags" : ["react functional Component","react"],
-        "language" : "jsx",
-        "title": "react functional component",
-        "body" : "import React from \"react\";\nfunction Component(){\n    //your comment here\n    return (\n        //your JSX here\n    )\n}\nexport default Component;"        
-    },
-    {
-        "id":15,
         "tags" : ["react functional Component","react"],
         "language" : "jsx",
         "title": "react functional component",
