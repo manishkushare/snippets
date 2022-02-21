@@ -76,7 +76,7 @@ export default function CodeMirrorWrapper() {
   if (state && state.length < 1) {
     return <h2>No Data Found</h2>;
   }
-  
+
   return (
     <div>
       {state &&
